@@ -1,3 +1,5 @@
+https://www.figma.com/community/plugin/1239294154051662580
+
 Below are the steps to get your plugin running. You can also find instructions at:
 
   https://www.figma.com/plugin-docs/plugin-quickstart/
