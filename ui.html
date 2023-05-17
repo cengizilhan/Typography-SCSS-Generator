@@ -1,0 +1,92 @@
+<h2>Typography SCSS Generator</h2>
+<div>
+
+ <a target="_blank"  href="https://www.buymeacoffee.com/sawacrow">https://www.buymeacoffee.com/sawacrow</a> :If you wanna support , you can buy me a pizza :)<br>
+ <a target="_blank"  href="https://github.com/sawacrow/typograpgy-generator-figma">https://github.com/sawacrow/typograpgy-generator-figma</a> : You can check the source code here and contribute or support<br>
+ <br>
+ <div id="emptymsg" style="display: none">
+  Ah, it seems like your designer accidentally forgot to add "Text Styles / Typography" to Figma. Don't worry, though! They'll surely rectify it in no time.
+  <br>
+ </div>
+ <br>
+</div>
+
+ <blockquote>
+  <pre>
+   <span>Paste below SCSS code to your .SCSS file and call mixins by @import code.</span>
+    <code id="code">
+    
+    </code>
+  </pre>
+ </blockquote>
+
+
+
+<script>
+    onmessage = (event) => {
+        console.log("got this from the plugin code", event.data.pluginMessage)
+        scssArray = event.data.pluginMessage;
+        //write the scssArray to the code block
+        console.table(scssArray);
+        let arrToStr= JSON.stringify(scssArray);
+       if (scssArray.length == 0) {
+           document.getElementById("emptymsg").style.display = "block";
+           //document.getElementById("code").innerHTML = emptyMessage;
+       }else {
+           scssArray.forEach(element => {
+               document.getElementById("code").innerHTML += element +'<br>';
+           });
+       }
+        
+        
+        
+        var devMessage= `  /* Developed by sawacrow
+https://www.buymeacoffee.com/sawacrow :If you wanna support, you can buy me a pizza :)
+https://github.com/sawacrow/typograpgy-generator-figma : You can check the source code here and contribute or support
+*/
+` ;
+        document.getElementById("code").innerHTML = document.getElementById("code").innerHTML + devMessage
+        
+        
+    }
+
+
+</script>
+
+<style>
+    blockquote, pre {
+        padding: 0;
+        margin:0;
+        display: flex;
+        flex:1;
+        flex-direction: column;
+        gap: 10px;
+    }
+ code {
+  font-size: 12px;
+  font-family: monospace;
+     padding: 30px 20px;
+  background-color: #212529;
+     color: #adb5bd;
+     
+  padding: 10px;
+  border-radius: 5px;
+  margin: 0;
+  overflow: auto;
+  display: block;
+  white-space: pre-wrap;
+  word-break: break-all;
+  word-wrap: break-word;
+  line-height: 1.5;
+  border: 1px solid #ccc;
+  margin-bottom: 20px;
+  width: 90%;
+  max-width: 90%;
+
+ }
+ #emptymsg{
+     border:1px solid red;
+     padding: 10px;
+     font-weight: bold;
+ }
+</style>
