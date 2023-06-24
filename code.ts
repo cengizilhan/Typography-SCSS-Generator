@@ -41,9 +41,12 @@ var scssArr: string[] = [];
 figma.getLocalTextStyles().forEach((style) => {
   //console.log('style name',style.name);
   //console.warn('style',style);
+  //console.warn("letter spacing",style.letterSpacing);
+  //console.warn('name',style.name);
   let mixinName = mixinNameGenerator(style.name);
   var fontWeight=fontWeightFinder(style.fontName.style);
   //console.log('lineHeight',style.lineHeight);
+  //console.log('fontweigh', fontWeight);
   var lineHeight='normal'
   var letterSpacing='normal'
   if (style.lineHeight === undefined || style.lineHeight === null) {
@@ -152,38 +155,42 @@ function unitFinder(y){
 // @ts-ignore
 function fontWeightFinder(x){
   var fontWeight='';
+  x=x.toLowerCase();
+  //console.log('x',x);
+
   switch (x) {
-    case 'Thin':
+    case 'thin':
       fontWeight='100';
       break;
-    case 'ExtraLight':
+    case 'extralight':
       fontWeight='200';
       break;
-    case 'Light':
+    case 'light':
       fontWeight='300';
       break;
-    case 'Regular':
-      fontWeight='normal';
+    case 'regular':
+      fontWeight='400';
       break;
-    case 'Medium':
+    case 'medium':
       fontWeight='500';
       break;
-    case 'SemiBold':
+    case 'semibold':
       fontWeight='600';
       break;
-    case 'Bold':
-      fontWeight='bold';
+    case 'bold':
+      fontWeight='700';
       break;
-    case 'ExtraBold':
+    case 'extrabold':
       fontWeight='800';
       break;
-    case 'Black':
+    case 'black':
       fontWeight='900';
       break;
     default:
-      fontWeight='normal';
+      fontWeight='400';
 
   }
+  //console.warn('fontWeight RETURN',fontWeight);
   return fontWeight;
 }
 // @ts-ignore
